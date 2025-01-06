@@ -54,25 +54,33 @@
     </style>
 </head>
     <script>
-        function goToHome(){
-            window.location.href="../index.php";
+        function goToPersonal(){
+            window.location.href="personal-details.php";
         }
     </script>
 <body>
+    
     <div class="full-container flex-center">
-        <form class="form-container" method="post">
-            <h1 class="text-primary"><strong>Personal Information</strong></h1>
+        <div class="form-container">
+            <h1 class="text-primary"><strong>Packages</strong></h1>
+            <?php
+                session_start();
+                echo $_SESSION["name"];
+                echo $_SESSION["email"];
+                echo $_SESSION["plate-number"];
+
+            ?>
             <hr >
             <label for="">Name: </label>
             <br>
-            <input type="text" name="name" style="width: 95%;" required>
+            <input type="text" name="name" style="width: 95%;">
             <br>
             <label for="">Email for Receipt:</label>
-            <input type="email" name="email" style="width: 95%" required>
+            <input type="text" name="email" style="width: 95%">
             <br>
             <label for="">Licensed Plate Number:</label>
             <br>
-            <input type="text" name="plate-number" style="width: 95%;" required>
+            <input type="text" name="plate-number" style="width: 95%;">
             <label for="">Vehicle Type:</label>
             <br>
             <input type="radio" name="vehicle_type"> Car
@@ -86,30 +94,10 @@
             <input type="radio" name="vehicle_type"> Bicycle
             <hr>
             <div class="form-button">
-                <div><button class="btn" onclick="goToHome()">Back to Homepage</button></div>
-                <div><button type="submit" name="go-to-payment" class="btn btn-primary">Continue</button></div>
+                <div><button class="btn" onclick="goToPersonal()">Back</button></div>
+                <div><button class="btn btn-primary">Continue</button></div>
             </div>
-        </form>
+        </div>
     </div>
-
-    <?php
-        if(isset($_POST["go-to-payment"]))
-        {
-            if(!isset($_POST["vehicle_type"]))
-            {
-                echo "<script> alert('No Vehicle Type Selected!') </script>";
-            }
-            else
-            {
-                session_start();
-                $_SESSION["name"] = $_POST["name"];
-                $_SESSION["email"] = $_POST["email"];
-                $_SESSION["plate-number"] = $_POST["plate-number"];
-                header("Location: package.php");
-                exit;
-            }
-        }
-    ?>
-
 </body>
 </html>
