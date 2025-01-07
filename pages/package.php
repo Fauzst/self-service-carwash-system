@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></scrip>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <style>
         .full-container {
             position: fixed;
@@ -24,9 +23,10 @@
         .form-container {
             border: 1px solid grey;
             padding: 20px;
-            width: 30%;
+            width: 60%;
             border-radius: 10px;
             background-color: white;
+            
         }
 
         .form-container label {
@@ -42,13 +42,27 @@
             justify-content: space-between;
         }
 
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
         @media only screen and (max-width:600px){
             .form-container {
                 border: 1px solid grey;
                 padding: 20px;
-                width: 70%;
+                width: 90%;
                 border-radius: 10px;
                 background-color: white;
+                height: 90vh;
+            }
+
+            .card-container {
+                flex-direction: column;
+               align-items: center;
+               overflow-y: scroll;
+               height: 80%;
             }
         }
     </style>
@@ -62,36 +76,33 @@
     
     <div class="full-container flex-center">
         <div class="form-container">
-            <h1 class="text-primary"><strong>Packages</strong></h1>
-            <?php
-                session_start();
-                echo $_SESSION["name"];
-                echo $_SESSION["email"];
-                echo $_SESSION["plate-number"];
-
-            ?>
-            <hr >
-            <label for="">Name: </label>
-            <br>
-            <input type="text" name="name" style="width: 95%;">
-            <br>
-            <label for="">Email for Receipt:</label>
-            <input type="text" name="email" style="width: 95%">
-            <br>
-            <label for="">Licensed Plate Number:</label>
-            <br>
-            <input type="text" name="plate-number" style="width: 95%;">
-            <label for="">Vehicle Type:</label>
-            <br>
-            <input type="radio" name="vehicle_type"> Car
-            <br>
-            <input type="radio" name="vehicle_type"> Motorcycle
-            <br>
-            <input type="radio" name="vehicle_type"> Tricycle
-            <br>
-            <input type="radio" name="vehicle_type"> Jeepney/E-Jeepney
-            <br>
-            <input type="radio" name="vehicle_type"> Bicycle
+            <div class="card-container">
+                <div class="card" style="width: 18rem; border: 1px solid black; p~">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; border: 1px solid black; p~">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; border: 1px solid black; p~">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+             </div> 
+            
             <hr>
             <div class="form-button">
                 <div><button class="btn" onclick="goToPersonal()">Back</button></div>
