@@ -75,7 +75,7 @@
 <body>
     
     <div class="full-container flex-center">
-        <div class="form-container">
+        <form class="form-container" method="post">
             <div class="card-container">
                 <div class="card" style="width: 18rem; border: 1px solid black; p~">
                     <img class="card-img-top" src="..." alt="Card image cap">
@@ -106,9 +106,17 @@
             <hr>
             <div class="form-button">
                 <div><button class="btn" onclick="goToPersonal()">Back</button></div>
-                <div><button class="btn btn-primary">Continue</button></div>
+                <div><button class="btn btn-primary" type="submit" name="continue">Continue</button></div>
             </div>
-        </div>
+        </form>
+
+        <?php
+            if(isset($_POST["continue"]))
+            {
+                header("location: check-connection.php");            
+                exit;
+            }
+        ?>
     </div>
 </body>
 </html>
