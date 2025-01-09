@@ -8,34 +8,39 @@
 <body>
     <h1>Available Packages</h1>
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "101407";
-    $dbname = "carwashDB";
+    /* require_once "../controller/database-controller.php";
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $dbController = new DatabaseController();
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    $getData = $dbController->getPackage();
 
-    // Query to fetch data from the 'packages' table
-    $sql = "SELECT * FROM packages";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // Output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "ID: " . $row["id"] . " - Name: " . $row["package_name"] . " - Price: " . $row["price"] . "<br>";
+    if (!empty($getData))
+    {
+        foreach ($getData as $data)
+        {
+            echo "ID:" . $user['id'] . ", Package: " . $user['package_name'] . ", Price: " . $user['price'];
         }
-    } else {
-        echo "No packages found.";
+    }
+    else 
+    {
+        echo "No users found.";
     }
 
-    // Close the connection
-    $conn->close();
+    */
+
+    $conn = new mysqli("localhost", "root", "101407", "carwashDB");
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "Connected successfully to the database!";
+}
+
+// Close the connection (optional for testing, usually done at the end of the script)
+$conn->close();
+    
+
 ?>
 </body>
 </html>
