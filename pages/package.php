@@ -23,6 +23,37 @@
 
 ?>
 
+<?php
+// Sample data (this could come from a database query)
+$data = [
+    [
+        "title" => "Card 1",
+        "content" => "This is the content of the first card.",
+        "image" => "https://via.placeholder.com/150",
+    ],
+    [
+        "title" => "Card 2",
+        "content" => "This is the content of the second card.",
+        "image" => "https://via.placeholder.com/150",
+    ],
+    [
+        "title" => "Card 3",
+        "content" => "This is the content of the third card.",
+        "image" => "https://via.placeholder.com/150",
+    ],
+    [
+        "title" => "Card 3",
+        "content" => "This is the content of the third card.",
+        "image" => "https://via.placeholder.com/150",
+    ],
+    [
+        "title" => "Card 3",
+        "content" => "This is the content of the third card.",
+        "image" => "https://via.placeholder.com/150",
+    ],
+];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,34 +130,42 @@
     </script>
 <body>
     
-    <div class="full-container flex-center">
-        <form class="form-container" method="post">
-            <div class="card-container">
-                <div class="card" style="width: 18rem; border: 1px solid black; ">
-                    <img class="card-img-top" src="..." alt="Card image cap">
+<div class="full-container flex-center">
+    <form class="form-container" method="post">
+        <div class="card-container">
+            <?php 
+            $cardCount = 0; // Track how many cards have been outputted
+            foreach ($data as $index => $item): 
+                if ($cardCount % 3 == 0 && $cardCount != 0): 
+                    echo '</div><div class="card-container">'; // Start a new row after 3 cards
+                endif;
+            ?>
+                <div class="card" style="width: 18rem; border: 1px solid black; margin-bottom: 16px;">
+                    <img class="card-img-top" src="<?php echo $item["image"]; ?>" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title"><?php echo $item["title"]; ?></h5>
+                        <p class="card-text"><?php echo $item["content"]; ?></p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-                <div class="card" style="width: 18rem; border: 1px solid black;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem; border: 1px solid black; ">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-             </div> 
+            <?php 
+                $cardCount++; // Increment card counter
+            endforeach; 
+            ?>
+        </div> <!-- Closing the last row -->
+    </form>
+</div>
+
+<style>
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start; /* Align items to the left */
+        gap: 16px; /* Add equal gaps between cards */
+    }
+</style>
+
+
             
             <hr>
             <div class="form-button">
