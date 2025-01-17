@@ -55,7 +55,7 @@
 <script>
     function goToPersonalDetails(){
         window.location.href = "pages/personal-details.php";
-        alert("Clicked!");
+        
     }
 </script>
 <body>
