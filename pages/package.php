@@ -1,3 +1,28 @@
+
+<?php
+    $host = "localhost";
+    $username = "root";
+    $password = "101407";
+    $db = "carwashDB";
+
+    $conn = new mysqli($host, $username, $password, $db);
+
+    if ($conn->connect_error)
+    {
+        http_response_code(500);
+        $failed = json_encode(["error" => "Database Connection Failed"]);
+        echo "<script>alert('" . addslashes($failed) . "');</script>";
+        exit;
+    }
+    else
+    {
+        http_response_code(200);
+        $connected = json_encode(["success" => "Connected Succesfully!"]);
+        echo "<script>alert('" . addslashes($connected) . "');</script>";
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,7 +102,7 @@
     <div class="full-container flex-center">
         <form class="form-container" method="post">
             <div class="card-container">
-                <div class="card" style="width: 18rem; border: 1px solid black; p~">
+                <div class="card" style="width: 18rem; border: 1px solid black; ">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -85,7 +110,7 @@
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-                <div class="card" style="width: 18rem; border: 1px solid black; p~">
+                <div class="card" style="width: 18rem; border: 1px solid black;">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -93,7 +118,7 @@
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-                <div class="card" style="width: 18rem; border: 1px solid black; p~">
+                <div class="card" style="width: 18rem; border: 1px solid black; ">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -110,13 +135,7 @@
             </div>
         </form>
 
-        <?php
-            if(isset($_POST["continue"]))
-            {
-                header("location: check-connection.php");            
-                exit;
-            }
-        ?>
+     
     </div>
 </body>
 </html>

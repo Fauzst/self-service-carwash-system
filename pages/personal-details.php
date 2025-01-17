@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></scrip>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
         .full-container {
@@ -75,15 +75,15 @@
             <input type="text" name="plate-number" style="width: 95%;" required>
             <label for="">Vehicle Type:</label>
             <br>
-            <input type="radio" name="vehicle_type"> Car
+            <input type="radio" name="vehicle_type" value="Car"> Car
             <br>
-            <input type="radio" name="vehicle_type"> Motorcycle
+            <input type="radio" name="vehicle_type" value="Motorcycle"> Motorcycle
             <br>
-            <input type="radio" name="vehicle_type"> Tricycle
+            <input type="radio" name="vehicle_type" value="Tricycle"> Tricycle
             <br>
-            <input type="radio" name="vehicle_type"> Jeepney/E-Jeepney
+            <input type="radio" name="vehicle_type" value="Jeepney/E-Jeepney"> Jeepney/E-Jeepney
             <br>
-            <input type="radio" name="vehicle_type"> Bicycle
+            <input type="radio" name="vehicle_type" value="Bicycle"> Bicycle
             <hr>
             <div class="form-button">
                 <div><button class="btn" onclick="goToHome()">Back to Homepage</button></div>
@@ -105,6 +105,7 @@
                 $_SESSION["name"] = $_POST["name"];
                 $_SESSION["email"] = $_POST["email"];
                 $_SESSION["plate-number"] = $_POST["plate-number"];
+                $_SESSION["vehicle-type"] = $_POST["vehicle_type"];
                 header("Location: package.php");
                 exit;
             }
