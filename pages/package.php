@@ -1,62 +1,13 @@
 
 <?php
-    $host = "localhost";
-    $username = "root";
-    $password = "101407";
-    $db = "carwashDB";
+    include "../api/package-read.php";
+    session_start();
+    $vehicle = $_SESSION["vehicle-type"];
 
-    $conn = new mysqli($host, $username, $password, $db);
+    $getPackage = new PackageReader();
 
-    if ($conn->connect_error)
-    {
-        http_response_code(500);
-        $failed = json_encode(["error" => "Database Connection Failed"]);
-        echo "<script>alert('" . addslashes($failed) . "');</script>";
-        exit;
-    }
-    else
-    {
-      
-        session_start();
-        session_start();
-        $vehicle = $_SESSION["vehicle-type"];
-        // Properly format the alert as a JavaScript string
-        echo "<script>alert('" . addslashes($vehicle) . "');</script>";
-       
-        
-    }
+    $data = $getPackage->getDataPackages($vehicle);
 
-?>
-
-<?php
-// Sample data (this could come from a database query)
-$data = [
-    [
-        "title" => "Card 1",
-        "content" => "This is the content of the first card.",
-        "image" => "https://via.placeholder.com/150",
-    ],
-    [
-        "title" => "Card 2",
-        "content" => "This is the content of the second card.",
-        "image" => "https://via.placeholder.com/150",
-    ],
-    [
-        "title" => "Card 3",
-        "content" => "This is the content of the third card.",
-        "image" => "https://via.placeholder.com/150",
-    ],
-    [
-        "title" => "Card 3",
-        "content" => "This is the content of the third card.",
-        "image" => "https://via.placeholder.com/150",
-    ],
-    [
-        "title" => "Card 3",
-        "content" => "This is the content of the third card.",
-        "image" => "https://via.placeholder.com/150",
-    ],
-];
 ?>
 
 <!DOCTYPE html>
@@ -147,10 +98,10 @@ $data = [
                     endif;
                 ?>
                     <div class="card" style="width: 18rem; border: 1px solid black; margin-bottom: 16px;">
-                        <img class="card-img-top" src="../assets/package_assets/bike1.jpg" style="height: 100px; object-fit: cover;" alt="Card image cap">
+                        <img class="card-img-top" src="<?php echo $item["imgLink"]?>" style="height: 100px; object-fit: cover;" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $item["title"]; ?></h5>
-                            <p class="card-text"><?php echo $item["content"]; ?></p>
+                            <h5 class="card-title"><?php echo $item["packageName"]; ?></h5>
+                            <p class="card-text"><?php echo $item["packageDesc"]; ?></p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
