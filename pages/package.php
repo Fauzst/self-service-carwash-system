@@ -16,9 +16,14 @@
     }
     else
     {
-        http_response_code(200);
-        $connected = json_encode(["success" => "Connected Succesfully!"]);
-        echo "<script>alert('" . addslashes($connected) . "');</script>";
+      
+        session_start();
+        session_start();
+        $vehicle = $_SESSION["vehicle-type"];
+        // Properly format the alert as a JavaScript string
+        echo "<script>alert('" . addslashes($vehicle) . "');</script>";
+       
+        
     }
 
 ?>
@@ -74,6 +79,7 @@ $data = [
             display: flex;
             justify-content: center;
             align-items: center;
+        
         }
 
         .form-container {
@@ -131,7 +137,7 @@ $data = [
 <body>
     
     <div class="full-container flex-center">
-        <form class="form-container" method="post">
+        <form class="form-container" method="post" style="overflow-y: auto;">
             <div class="card-container">
                 <?php 
                 $cardCount = 0;
@@ -141,7 +147,7 @@ $data = [
                     endif;
                 ?>
                     <div class="card" style="width: 18rem; border: 1px solid black; margin-bottom: 16px;">
-                        <img class="card-img-top" src="<?php echo $item["image"]; ?>" alt="Card image cap">
+                        <img class="card-img-top" src="../assets/package_assets/bike1.jpg" style="height: 100px; object-fit: cover;" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $item["title"]; ?></h5>
                             <p class="card-text"><?php echo $item["content"]; ?></p>
