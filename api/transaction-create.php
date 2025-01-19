@@ -43,7 +43,10 @@
 
         private function uploadData()
         {
-
+            $sql = $this->conn->prepare("INSERT INTO transaction (name, email, plateNumber, vehicleType, packageAvailed, packagePrice, orderKey) 
+                                                VALUES (?,?,?,?,?,?,?)");
+            $sql->bind_param("sssssds", $this->name, $this->email, $this->plateNumber, $this->vehicleType, $this->packagedAvail, $this->packagePrice, $this->orderKey);
+            $sql->execute();
         }
 
     }
