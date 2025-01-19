@@ -3,6 +3,10 @@
     include '../controller/package_read_controller.php';
 ?>
 
+<?php
+    include "../controller/id_saver.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,14 +94,18 @@
                         echo '</div><div class="card-container">';
                     endif;
                 ?>
-                    <div class="card" style="width: 18rem; border: 1px solid black; margin-bottom: 16px;">
-                        <img class="card-img-top" src="<?php echo $item["imgLink"]?>" style="height: 100px; object-fit: cover;" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $item["packageName"]; ?></h5>
-                            <p class="card-text"><?php echo $item["packageDesc"]; ?></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <form action="post" name="package_form">
+                        <div class="card" style="width: 18rem; border: 1px solid black; margin-bottom: 16px;">
+                            <img class="card-img-top" src="<?php echo $item["imgLink"]?>" style="height: 100px; object-fit: cover;" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title" name="package_avail" value=""<?php echo $item["packageName"] ?>><?php echo $item["packageName"]; ?></h5>
+                                <hr>
+                                <p name="package_price" value="<?php echo $item["packagePrice"] ?>"><strong>Price:</strong> <?php echo $item["packagePrice"]?></p>
+                                <p class="card-text"><?php echo $item["packageDesc"]; ?></p>
+                                <button type="submit" href="#" class="btn btn-primary" name="submit_card" value="<?php echo $item["id"]?>" >Avail</>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 <?php 
                     $cardCount++; 
                 endforeach; 

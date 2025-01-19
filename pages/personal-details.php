@@ -1,3 +1,7 @@
+<?php
+    include "../controller/personal_detail_controller.php";        
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,25 +96,7 @@
         </form>
     </div>
 
-    <?php
-        if(isset($_POST["go-to-payment"]))
-        {
-            if(!isset($_POST["vehicle_type"]))
-            {
-                echo "<script> alert('No Vehicle Type Selected!') </script>";
-            }
-            else
-            {
-                session_start();
-                $_SESSION["name"] = $_POST["name"];
-                $_SESSION["email"] = $_POST["email"];
-                $_SESSION["plate-number"] = $_POST["plate-number"];
-                $_SESSION["vehicle-type"] = $_POST["vehicle_type"];
-                header("Location: package.php");
-                exit;
-            }
-        }
-    ?>
+
 
 </body>
 </html>
