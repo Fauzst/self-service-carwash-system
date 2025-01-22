@@ -1,10 +1,5 @@
-
 <?php
-    include '../controller/package_read_controller.php';
-?>
-
-<?php
-    include "../controller/id_saver.php";
+    include "../controller/finish_transaction.php";
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +60,7 @@
                 width: 90%;
                 border-radius: 10px;
                 background-color: white;
-                height: 90vh;
+                height: auto;
             }
 
             .card-container {
@@ -84,39 +79,16 @@
     </script>
 <body>
     
-<div class="full-container flex-center">
-    <div class="form-container" style="overflow-y: auto;">
-        <div class="card-container">
-            <?php 
-            $cardCount = 0;
-            foreach ($data as $index => $item): 
-                // Group cards into rows of 3
-                if ($cardCount % 3 == 0 && $cardCount != 0): 
-                    echo '</div><div class="card-container">';
-                endif;
-            ?>
-                <form action="" method="post">
-                    <div class="card" style="width: 18rem; border: 1px solid black; margin-bottom: 16px;">
-                        <img class="card-img-top" src="<?php echo $item["imgLink"] ?>" style="height: 100px; object-fit: cover;" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $item["packageName"]; ?></h5>
-                            <hr>
-                            <p><strong>Price:</strong> <?php echo $item["packagePrice"]; ?></p>
-                            <p class="card-text"><?php echo $item["packageDesc"]; ?></p>
-                            <input type="hidden" name="package_price" value="<?php echo $item["packagePrice"]; ?>">
-                            <input type="hidden" name="package_avail" value="<?php echo $item["packageName"]; ?>">
-                            <button type="submit" class="btn btn-primary" name="submit_card" value="<?php echo $item["id"]; ?>">Avail</button>
-                        </div>
-                    </div>
-                </form>
-            <?php 
-                $cardCount++; 
-            endforeach; 
-            ?>
-        </div>
+    <div class="full-container flex-center">
+        <form class="form-container" method="post" style="overflow-y: auto;">
+            <p class="text-center">Your order code is...</p>
+            <h1 class="text-center"><strong>O1wu8Ay57</strong></h1>
+            <p class="text-center">Show this code to the front-desk to confirm your service.</p>
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-primary" name="finish_transact" type="submit">Finish Transaction</button>
+            </div> 
+        </form>
     </div>
-</div>
-
 
     <style>
         .card-container {
@@ -126,15 +98,8 @@
             gap: 16px; /* Add equal gaps between cards */
         }
     </style>
-
-
             
-            <hr>
-            <div class="form-button">
-                <div><button class="btn" onclick="goToPersonal()">Back</button></div>
-                <div><button class="btn btn-primary" type="submit" name="continue">Continue</button></div>
-            </div>
-        </form>
+          
 
      
     </div>

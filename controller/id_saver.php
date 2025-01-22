@@ -8,5 +8,10 @@
         $_SESSION["id"] = $id;
         $_SESSION["package-price"] = $price;
         $_SESSION["package-avail"] = $package;
+        
+        header("Location: order_key.php");
+        exit;
     }
+
+    
 ?>
